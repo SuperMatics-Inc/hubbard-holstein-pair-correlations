@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Please cite the preprint and its replay supplement."
+title: "Finite replay and proof notes for Pair correlations in the Hubbard-Holstein model at strong coupling, uniform in the phonon frequency"
+type: software
+version: 1.0.0
+license: Apache-2.0
+authors:
+  - family-names: Rens
+    given-names: Davis
+    affiliation: SuperMatics Inc.
+    orcid: "https://orcid.org/0000-0001-5839-5197"
+doi: "10.5281/zenodo.24382240"
+repository-code: "https://github.com/SuperMatics-Inc/hubbard-holstein-pair-correlations"
+preferred-citation:
+  type: article
+  title: "Pair correlations in the Hubbard-Holstein model at strong coupling, uniform in the phonon frequency"
+  authors:
+    - family-names: Rens
+      given-names: Davis
+      affiliation: SuperMatics Inc.
+      orcid: "https://orcid.org/0000-0001-5839-5197"
+  doi: "10.5281/zenodo.24382235"
+  year: 2026

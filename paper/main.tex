@@ -1,0 +1,399 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{microtype}
+\newcommand{\DOI}[1]{\mbox{\href{https://doi.org/#1}{\nolinkurl{#1}}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\dist}{dist}
+\newcommand*{\HUBHOLDOI}{10.5281/zenodo.24382235}
+\newcommand*{\HUBHOLSUPPDOI}{10.5281/zenodo.24382240}
+\newcommand*{\HUBHOLREPO}{https://github.com/SuperMatics-Inc/hubbard-holstein-pair-correlations}
+\newcommand{\ifstaged}[3]{\ifx#1\empty #3\else #2\fi}
+\newcommand{\Deltaop}{\Delta}
+\newcommand{\Nodd}{N_{\mathrm{odd}}}
+\newcommand{\Neven}{N_{\mathrm{even}}}
+\title{Pair correlations in the Hubbard-Holstein model at strong coupling, uniform in the phonon frequency}
+\author{Davis Rens\\SuperMatics Inc.\\\href{https://orcid.org/0000-0001-5839-5197}{ORCID 0000-0001-5839-5197}}
+\date{\smash{\parbox{.98\linewidth}{\centering\scriptsize
+\ifstaged{\HUBHOLDOI}{Article DOI: \expandafter\DOI\expandafter{\HUBHOLDOI}\quad}{}
+\ifstaged{\HUBHOLSUPPDOI}{Supplement DOI: \expandafter\DOI\expandafter{\HUBHOLSUPPDOI}}{}\\
+\ifstaged{\HUBHOLREPO}{Source repository: \expandafter\url\expandafter{\HUBHOLREPO}}{}
+}}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the spinful Hubbard–Holstein model on square tori, we prove explicit exponential bounds on equal-time on-site pair correlations, uniform in every positive phonon frequency. Write $U=2g_0^2/\Omega$ for the phonon-mediated attraction and $U_{\rm eff}=U-U_c$. When $U_{\rm eff}>0$, the condition $\beta t^2/U_{\rm eff}\le 2^{-27}$ gives the constants $240/59$ and $5/64$, with no restriction on the chemical potential. When $U_c>U$, the same constants hold in the Mott window under the corresponding charge-gap condition, while dilute regimes have separate bounds. A high-temperature estimate applies for every $U_c$. At half filling these results combine into the scale $\tau\ge\min\{1024t,2^{27}t^2/|U-U_c|\}$. At the degenerate point the only half-filling bound established here is the high-temperature one. The antiadiabatic limit is the Hubbard model, and a finite free-electron example shows that two stated constant forms cannot hold there uniformly in frequency at $\tau=t$. The stopping results concern failure of a sufficient polymer criterion only; they do not imply failure of correlation decay.
+\end{abstract}
+
+\section{Model and main statements}
+
+Let $\Lambda_M=(\mathbb Z/M\mathbb Z)^2$ be the square torus, with $M\ge4$ and graph distance $d_\Lambda$. At each site $x$ there are two fermion modes $c_{x\sigma}$, $\sigma\in\{\uparrow,\downarrow\}$, and an oscillator with annihilation operator $a_x$. We study
+\begin{equation}\label{eq:hamiltonian}
+ H=-t\sum_{\langle xy\rangle,\sigma}
+ (c_{x\sigma}^\dagger c_{y\sigma}+c_{y\sigma}^\dagger c_{x\sigma})
+ +\Omega\sum_x a_x^\dagger a_x
+ +g_0\sum_x(n_x-1)(a_x+a_x^\dagger)
+ +U_c\sum_x\left(n_{x\uparrow}-\tfrac12\right)
+                  \left(n_{x\downarrow}-\tfrac12\right)-\mu N,
+\end{equation}
+where $n_x=\sum_\sigma c_{x\sigma}^\dagger c_{x\sigma}$, $N=\sum_x n_x$, $t,\Omega>0$, $U_c,\mu\in\mathbb R$, and
+\[
+ U=\frac{2g_0^2}{\Omega}>0,\qquad
+ U_{\rm eff}=U-U_c,\qquad
+ \beta>0,\qquad \tau=\beta^{-1},\qquad
+ \Deltaop_x=c_{x\downarrow}c_{x\uparrow}.
+\]
+The chemical potential is centered as in (1). We write $\langle\cdot\rangle_{\beta,\Lambda_M}$ for the finite-volume grand-canonical state. Canonical conclusions below concern translation-invariant thermodynamic limits, not uniform finite-volume canonical bounds.
+
+\begin{theorem}[Attractive regime]\label{thm:attractive}
+Suppose $U_{\rm eff}>0$ and $\beta t^2/U_{\rm eff}\le2^{-27}$. Then for every $\Omega>0$, $M\ge4$, $\mu\in\mathbb R$, and distinct $x,y\in\Lambda_M$,
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle_{\beta,\Lambda_M}\right|
+ \le \frac{240}{59}\left(\frac5{64}\right)^{d_\Lambda(x,y)}.
+\]
+The estimate transfers to translation-invariant canonical thermodynamic limits at every density $\rho\in(0,2)$.
+\end{theorem}
+
+\begin{theorem}[Mott window]\label{thm:mott}
+Suppose $U_{\rm eff}<0$, $|\mu|<|U_{\rm eff}|/2$, and set
+\[
+ G=|U_{\rm eff}|/2-|\mu|>0.
+\]
+If $\beta t^2/G\le2^{-26}$, then the bound of Theorem~\ref{thm:attractive} holds, uniformly in $\Omega$ and $M$. The source expansion used for canonical transfer is analytic for $|\xi|\le\tau/2^{14}$, with source ratio $45/256$ and source budget $675/844$. At half filling, $\mu=0$, the hypothesis is $\beta t^2/(U_c-U)\le2^{-27}$, and on even tori the estimate transfers to canonical thermodynamic limits at density $1$.
+\end{theorem}
+
+\begin{theorem}[Dilute regimes]\label{thm:dilute}
+Suppose $U_{\rm eff}\le0$, $|\mu|>|U_{\rm eff}|/2$, and set $G=|\mu|-|U_{\rm eff}|/2>0$. If $\beta t^2/G\le2^{-26}$, then
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle_{\beta,\Lambda_M}\right|
+ \le \frac{144}{29}\left(\frac3{32}\right)^{d_\Lambda(x,y)}.
+\]
+If $\beta t^2/G\le2^{-28}$, the bound improves to
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle_{\beta,\Lambda_M}\right|
+ \le \frac{288}{61}\left(\frac3{64}\right)^{d_\Lambda(x,y)}.
+\]
+Both bounds are uniform in $\Omega>0$ and $M\ge4$. Under the stronger hypothesis the source expansion is analytic for $|\xi|\le\tau/2^{15}$, with source ratio $27/256$ and budget $243/458$, and the estimate transfers to canonical thermodynamic limits at densities supported by such a chemical potential.
+\end{theorem}
+
+\begin{theorem}[High temperature for every on-site interaction]\label{thm:hightemp}
+For every $U_c,\mu\in\mathbb R$, if $\beta t\le1/1024$, then uniformly in $\Omega>0$, $M\ge4$, and distinct $x,y$,
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle_{\beta,\Lambda_M}\right|
+ \le \frac{1533}{463}\left(\frac{48}{511}\right)^{d_\Lambda(x,y)}.
+\]
+This estimate transfers to translation-invariant canonical thermodynamic limits at every density in $(0,2)$.
+\end{theorem}
+
+\begin{corollary}[Half-filling scale]\label{cor:half}
+At $\mu=0$, pair correlations decay exponentially with explicit constants whenever
+\[
+ \tau\ge\min\left\{1024t,\frac{2^{27}t^2}{|U-U_c|}\right\},
+\]
+where the second threshold is interpreted as $+\infty$ when $U=U_c$. If $\tau\ge1024t$, Theorem~\ref{thm:hightemp} applies. If $U\ne U_c$ and $\tau\ge2^{27}t^2/|U-U_c|$, Theorem~\ref{thm:attractive} or Theorem~\ref{thm:mott} applies. The same alternatives hold for canonical thermodynamic limits at density $1$ on even tori.
+\end{corollary}
+
+\section{Context and scope}
+
+The standard Holstein model describes local coupling between electrons and optical phonons \cite{holstein}. The Lang–Firsov transformation is a standard way to expose its atomic attraction \cite{langfirsov}. The analysis here builds on the predecessor preprint, \emph{Strong-coupling suppression of electronic pair order in the Holstein model, uniformly in phonon frequency and without a hopping cutoff} \cite{stage6}, released at Zenodo under DOI 10.5281/zenodo.24380128. In the present model the direct on-site interaction commutes with the Lang–Firsov transformation, but changes the electronic atomic gap from $U$ to $U-U_c$.
+
+For general electron–phonon Hamiltonians, Freericks and Lieb prove a spin-singlet ground-state result with uniqueness \cite{freericksLieb}. % PRIORWORK
+Miyao establishes ground-state properties for the Holstein–Hubbard model, including charge-susceptibility bounds under coupling restrictions \cite{miyao2017}. % PRIORWORK
+Ueltschi proves analyticity and exponential clustering for Hubbard models without phonons, in high-temperature or small-hopping regimes \cite{uelschiHubbard}. % PRIORWORK
+For Hubbard models without phonons, Koma and Tasaki prove finite-temperature decay of superconducting pair correlations, exponential in one dimension and algebraic in two \cite{komaTasaki}, and Kashima proves exponential decay of equal-time four-point correlations, including singlet-pair correlations, for a copper-oxide Hubbard model at weak coupling \cite{kashima2014}. % PRIORWORK
+None of these results contains dynamical phonons together with finite-temperature pair-decay bounds uniform in phonon frequency, which is the setting of the bounds established here. The statements below give explicit pair-correlation bounds with their precise gap conditions and finite-volume limits. No priority claim is made. The Lang–Firsov representation and the limit as $\Omega$ tends to infinity are used as standard tools.
+
+\section{Lang–Firsov representation}
+
+Set
+\[
+ S=\frac{g_0}{\Omega}\sum_x(n_x-1)(a_x^\dagger-a_x).
+\]
+It commutes with every $n_{x\sigma}$. After conjugating by $e^S$ and dropping an additive constant, the on-site electronic part is
+\[
+ h_x^{\rm el}=\frac{U_{\rm eff}}2\mathbf 1[n_x=1]-\mu n_x,
+ \qquad
+ D_0^{\rm HH}=\frac{U_{\rm eff}}2N_{\rm odd}-\mu N,
+ \qquad
+ N_{\rm odd}=\sum_x\mathbf 1[n_x=1].
+\]
+Indeed, on the four local states the Hubbard factor is $1/4-\mathbf 1[n_x=1]/2$, while $(n_x-1)^2=1-\mathbf 1[n_x=1]$. Each transformed hop has norm at most $2t$ and includes endpoint oscillator displacements. Its phonon displacement strength depends on $U$ and $\Omega$, but the upper bounds below use only the following contraction.
+
+For a closed occupation history $n_x(u)$, $0\le u\le\beta$, the normalized oscillator trace is $e^{-\Phi_\beta[n_x]}$, where
+\begin{align*}
+ \Phi_\beta[n]&=\frac14\int_0^\beta\!du\int_0^\beta\!dv\,
+       (n(u)-n(v))^2K_\beta(u-v),\\
+ K_\beta(w)&=\frac{U\Omega}{2}
+       \frac{e^{-\Omega w}+e^{-\Omega(\beta-w)}}{1-e^{-\beta\Omega}},
+ \qquad \int_0^\beta K_\beta(w)\,dw=U.
+\end{align*}
+Thus $0<e^{-\Phi_\beta[n_x]}\le1$. This identity is unchanged by the Hubbard term, which is diagonal in the occupation basis and acts only on the electrons. Consequently every upper bound in the proof discards a factor at most one and depends on $U$ and $U_c$ only through $U_{\rm eff}$.
+
+The atomic electronic partition function at one site is
+\[
+ z_a=\Tr_x e^{-\beta D_{0,x}^{\rm HH}}
+ =1+z^2+2z e^{-\beta U_{\rm eff}/2},
+ \qquad z=e^{\beta\mu}.
+\]
+The exact hard-core spatial polymer representation and the normalized signless electronic majorant from the predecessor paper remain valid: the additional Hubbard term is on site and diagonal, so it changes neither the chronological oscillator trace nor the spatial factorization.
+Group the Dyson series by its distinct physical bond labels. Each connected component has connected edge support and gives a polymer $\gamma$ with vertex support $S_\gamma$. Components on disjoint supports factor, giving an exact hard-core polymer gas. We use the Kotecký–Preiss sufficient site condition \cite{kp}
+\[
+ \sup_x\sum_{\gamma:x\in S_\gamma}|w(\gamma)|e^{|S_\gamma|}\le1.
+\]
+Under this condition, the logarithmic cluster expansion converges absolutely and the deletion estimate $|Z_{\Lambda\setminus S}/Z_\Lambda|\le e^{|S|}$ holds for every vertex set $S$. The tree bound for hard-core incompatibility gives both conclusions for complex polymer activities; marked pair activities obey the same support estimate.
+
+\section{Atomic gaps and an edge estimate}
+
+For a finite support $S$, define the four nonnegative costs
+\[
+ N_{\rm odd}=\sum_{x\in S}\mathbf 1[n_x=1],\quad
+ N_{\rm even}=\sum_{x\in S}\mathbf 1[n_x\ne1],\quad
+ N_{\rm occ}=\sum_{x\in S}\mathbf 1[n_x\ge1],\quad
+ N_{\rm hole}=\sum_{x\in S}\mathbf 1[n_x\le1].
+\]
+The atomic ground states and gaps give the following choices.
+\begin{center}
+\begin{tabular}{c|c|c}
+regime & cost & gap $G$ \\
+\hline
+$U_{\rm eff}>0$, any $\mu$ & $N_{\rm odd}$ & $U_{\rm eff}/2$ \\
+$U_{\rm eff}<0$, $|\mu|<|U_{\rm eff}|/2$ & $N_{\rm even}$ & $|U_{\rm eff}|/2-|\mu|$ \\
+$U_{\rm eff}\le0$, $\mu<-|U_{\rm eff}|/2$ & $N_{\rm occ}$ & $|\mu|-|U_{\rm eff}|/2$ \\
+$U_{\rm eff}\le0$, $\mu>|U_{\rm eff}|/2$ & $N_{\rm hole}$ & $|\mu|-|U_{\rm eff}|/2$
+\end{tabular}
+\end{center}
+For each row, every state counted by the cost lies at least $G$ above an atomic minimum. In either dilute regime the doubly occupied state, or its particle–hole image, has excess energy at least $2G$. The point $U_{\rm eff}=0$, $\mu=0$ has no atomic gap.
+
+On an edge $e=\{u,v\}$, let $B_e$ be the signless sixteen-state hop matrix. Its connected components consist of singletons, four two-state components, and a four-state component $K_{2,2}$ connecting the even-even states to the opposite-spin odd-odd states. Write $\Gamma_e$ for any of the four costs restricted to the two endpoints.
+
+\begin{theorem}[Edge sum of squares]\label{thm:sos}
+For every $g\ge0$, $\alpha>0$, and each $\Gamma\in\{N_{\rm odd},N_{\rm even},N_{\rm occ},N_{\rm hole}\}$,
+\[
+ \alpha\Gamma_e+\frac{2g^2}{\alpha}I-gB_e\succeq0.
+\]
+For $N_{\rm odd}$ and $N_{\rm even}$ the constant $2$ cannot be replaced by $1$.
+\end{theorem}
+
+\begin{proof}
+Put $x=g/\alpha$. After division by $\alpha$, the matrix is $\Gamma_e+2x^2I-xB_e$. On a singleton it is nonnegative. On a two-state component its determinant is
+\[
+ \Gamma_a\Gamma_b+2x^2(\Gamma_a+\Gamma_b)+4x^4-x^2,
+\]
+which is nonnegative for the cost pairs in the table below. On the $K_{2,2}$ component, the symmetric combinations of the two even-even states and of the two opposite-spin odd-odd states form the only nonzero hopping block. If the corresponding cost values are $\Gamma_P$ and $\Gamma_Q$, that block is
+\[
+ \begin{pmatrix}\Gamma_P+2x^2&-2x\\-2x&\Gamma_Q+2x^2\end{pmatrix},
+\]
+whose determinant is $\Gamma_P\Gamma_Q+2x^2(\Gamma_P+\Gamma_Q-2)+4x^4$. The required cost values are
+\[
+\begin{array}{c|c|c}
+\Gamma & (\Gamma_a,\Gamma_b) & (\Gamma_P,\Gamma_Q)\\
+\hline
+N_{\rm odd}&(1,1)&(0,2)\\
+N_{\rm even}&(1,1)&(2,0)\\
+N_{\rm occ}&(1,1)\text{ or }(2,2)&(1,2)\\
+N_{\rm hole}&(2,2)\text{ or }(1,1)&(1,2)
+\end{array}
+\]
+and make both blocks positive semidefinite. With the constant replaced by $1$, the determinant on the $K_{2,2}$ block for $(\Gamma_P,\Gamma_Q)=(0,2)$ and $x=1$ is $-1$.
+\end{proof}
+
+For a finite edge set $E$ with $k$ edges, maximum degree $D\le4$, endpoint set $S_E$, and $\Gamma_S=\sum_{x\in S_E}\mathbf1_{\cdot,x}$, summing Theorem~\ref{thm:sos} with $\alpha=G/(2D)$ gives
+\begin{equation}\label{eq:form}
+ gB_E\le\frac G2\Gamma_S+\frac{4Dkg^2}{G}I.
+\end{equation}
+In particular, on the square lattice the scalar term is $16kg^2/G$. For the attractive regime $G=U_{\rm eff}/2$, this is the estimate of the predecessor paper~\cite{stage6} with $U$ replaced by $U_{\rm eff}$.
+
+\section{Support bounds and exponential decay}
+
+Let $E$ be a nonempty connected physical edge set, $k=|E|$, $v=|S_E|$, and let $w(E)$ denote its signed polymer activity. Marked activities for the pair field are denoted $w_{xy}(E)$. The signless trace majorant is
+\[
+ P_E(L)=\frac{\Tr_{\rm el}\exp[-\beta(D_0^{\rm HH}-LtB_E)]}{z_a^v},
+ \qquad L\ge1.
+\]
+The phonon contraction and the positive Dyson expansion imply
+\[
+ |w(E)|,\ |w_{xy}(E)|\le L^{-k}P_E(L).
+\]
+By \eqref{eq:form}, eigenvalue monotonicity, and factorization of the atomic trace over sites,
+\[
+ P_E(L)\le\exp\!\left(\frac{16k\beta L^2t^2}{G}\right)
+                 \left(\frac{z_b}{z_a}\right)^v,
+ \qquad
+ z_b=\Tr_x e^{-\beta(D_{0,x}^{\rm HH}-\frac G2\mathbf1_{\cdot,x})}.
+\]
+The trace comparison uses the ordering of the Hermitian eigenvalues and the decreasing scalar exponential. It does not require operator monotonicity of the matrix exponential.
+
+Write $z_a=W_0+W_1$, where $W_1$ is the total weight of costed states, and put $y=W_1/W_0$, $v_0=e^{-\beta G/2}$. Then
+\[
+ \frac{z_b}{z_a}=R(y)=\frac{1+y/v_0}{1+y},
+ \qquad R'(y)=\frac{1/v_0-1}{(1+y)^2}>0.
+\]
+In the attractive and Mott regimes, $y\le v_0^2$, so
+\[
+ \frac{z_b}{z_a}\le\frac{1+v_0}{1+v_0^2}
+ \le\frac{1+\sqrt2}{2}<\frac54.
+\]
+In the dilute regimes, $y\le2v_0^2+v_0^4$, hence
+\[
+ \frac{z_b}{z_a}\le\frac{1+2v_0+v_0^3}{(1+v_0^2)^2}<\frac32.
+\]
+For the latter inequality,
+\[
+ 3(1+v_0^2)^2-2(1+2v_0+v_0^3)
+ =(1-2v_0)^2+v_0^2\left(3(v_0-\tfrac13)^2+\tfrac53\right)>0.
+\]
+
+Set $\varepsilon=\beta t^2/G$. If $64L^2\varepsilon\le1$, the exponential factor above is at most $e^{k/4}$. For a cap $c=5/4$ in the attractive and Mott regimes, or $c=3/2$ in the dilute regimes, connectedness gives $v\le k+1$, and
+\[
+ |w(E)|,\ |w_{xy}(E)|\le c\left(\frac{4c}{3L}\right)^k,
+\]
+using $e^{1/4}<4/3$. The number of connected supports with $k$ edges rooted at a vertex is at most $16^k$. The Kotecký–Preiss site sum is therefore bounded by
+\[
+ 3c\sum_{k\ge1}q^k=\frac{3cq}{1-q},
+ \qquad q=\frac{64c}{L}.
+\]
+The marked support connecting $x$ and $y$ has at least $d_\Lambda(x,y)$ edges. Applying the deletion estimate to the remaining gas gives
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle\right|
+ \le\frac{3c}{1-q}q^{d_\Lambda(x,y)}.
+\]
+For $c=5/4$ and $L=2^{10}$ this yields $q=5/64$, prefactor $240/59$, and site budget $75/236$. The condition $64L^2\varepsilon\le1$ becomes $\varepsilon\le2^{-26}$, giving Theorems~\ref{thm:attractive} and \ref{thm:mott}. In the attractive case $G=U_{\rm eff}/2$, hence the stated condition is $\beta t^2/U_{\rm eff}\le2^{-27}$.
+
+For $c=3/2$ and $L=2^{10}$, one gets $q=3/32$, prefactor $144/29$, and site budget $27/58$. At $L=2^{11}$, one gets $q=3/64$, prefactor $288/61$, and site budget $27/122$. These choices give Theorem~\ref{thm:dilute}. Allowing a real scale $L=(64\varepsilon)^{-1/2}$ gives the sharper rates $q=640\sqrt{\beta t^2/G}$ in the attractive and Mott regimes and $q=768\sqrt{\beta t^2/G}$ in the dilute regimes. The grand-canonical bounds require only the site budget, which is below one for $L\ge2^{10}$. At the dyadic scale $L=2^{10}$ the dilute source budget is above one; at $L=2^{11}$ it is below one.
+
+\section{Real sources and canonical limits}
+
+For a nonzero displacement $r$ and phase $\theta$, introduce the number-conserving source
+\[
+ X=\sum_x\left(e^{i\theta}\Deltaop_x^\dagger\Deltaop_{x+r}
+       +e^{-i\theta}\Deltaop_{x+r}^\dagger\Deltaop_x\right),
+ \qquad H(\xi)=H-\xi X.
+\]
+Each source label has two-site support and norm at most two. The source-augmented support graph has degree six and rooted count at most $36^k$. At scale $L$ the source penalty is bounded by $2\beta L|\xi|$; on $|\xi|\le\tau/(16L)$ it is at most $1/8$. The source ratio and budget are
+\[
+ q_s=\frac{144c}{L},\qquad \frac{3cq_s}{1-q_s}.
+\]
+For the attractive and Mott bounds, $c=5/4$, $L=2^{10}$ gives $q_s=45/256$ and budget $675/844$. For the dilute canonical bound, $c=3/2$, $L=2^{11}$ gives $q_s=27/256$ and budget $243/458$. The pressure is analytic in the corresponding real-source disk, uniformly in volume and in the real chemical potential.
+Writing $p_\Lambda(\xi)=|\Lambda|^{-1}\log Z_{\rm GC}(\xi;\mu)$, translation invariance and the source expansion give
+\[
+ p_\Lambda'(0)=2\beta\operatorname{Re}\left(e^{i\theta}
+ \left\langle\Deltaop_0^\dagger\Deltaop_r\right\rangle_{\rm GC}\right),
+ \qquad
+ p_\Lambda(\xi)-p_\Lambda(0)
+ \le2\beta A q^{d_\Lambda(0,r)}|\xi|
+       +4|\xi|^2/\xi_0^2
+ \quad (\xi\in\mathbb R,\ |\xi|\le\xi_0/2),
+\]
+where $\xi_0=\tau/(16L)$ and $A,q$ are the corresponding decay constants. The quadratic remainder follows from Cauchy's estimate on the analytic pressure disk.
+
+To pass to canonical thermodynamic limits, tile large tori by fixed open square blocks and remove interactions crossing block boundaries. At fixed block size the boundary cost is proportional to total boundary, and the number of block number allocations contributes at most $K\log(2b+1)$ for $K$ blocks of volume $b$; these errors per site vanish in the thermodynamic limit followed by the large-block limit. This yields a concave canonical pressure $f(\rho)$ and $p(\mu)=\sup_{0\le\rho\le2}\{f(\rho)+\beta\mu\rho\}$. At a finite supporting chemical potential $\mu$, for any sequence $N/|\Lambda|\to\rho$,
+\[
+ \delta_\Lambda=\frac{\log Z_{\rm GC}(0;\mu)-\log Z_N(0)-\beta\mu N}{|\Lambda|}\ge0,
+ \qquad \delta_\Lambda\longrightarrow0.
+\]
+For $0<\xi\le\xi_0/2$, source-pressure control and convexity of the canonical real-source log partition function give
+\[
+ \left|2\beta\operatorname{Re}\left(e^{i\theta}
+ \left\langle\Deltaop_0^\dagger\Deltaop_r\right\rangle_N\right)\right|
+ \le 2\beta A q^{d_\Lambda(0,r)}+\frac{4\xi}{\xi_0^2}
+       +\frac{\delta_\Lambda}{\xi},
+ \qquad \xi_0=\frac{\tau}{16L},
+\]
+where $A,q$ are the applicable grand-canonical constants. Take the thermodynamic limit at fixed $\xi$, then let $\xi\downarrow0$ and vary $\theta$. This proves only a thermodynamic-limit statement. In the Mott regime, particle–hole symmetry on even tori makes $\mu=0$ a supporting chemical potential at density one. In the dilute regime, transfer is asserted only at densities supported by a chemical potential satisfying the stated hypothesis.
+
+For completeness, the high-temperature bound follows from the norm estimate $\|V_e\|\le2t$. Trace H\"older applied to the atomic heat factors and bounded bond insertions, followed by the chronological simplex and multiplicity sum, gives $|w(E)|\le(e^{2\beta t}-1)^k$. If $\beta t\le1/1024$, then $e^{2\beta t}-1\le1/511$, so the square-lattice rooted count gives $q=48/511$, site budget $144/463$, and pair prefactor $1533/463$. The source graph gives ratio $108/511$ and budget $324/403$, allowing the same thermodynamic transfer at every interior density. This proof does not use a charge gap and applies to every $U_c$.
+
+\section{The antiadiabatic limit}
+
+The Lang–Firsov representation also gives the standard Hubbard limit at fixed finite volume. For a periodic piecewise-constant occupation path with jumps $c_j$, the oscillator action obeys
+\[
+ 0\le\Phi_\beta[n]\le
+ \frac{U\sum_j|c_j|}{2\Omega(1-e^{-\beta\Omega})}.
+\]
+
+\begin{theorem}[Finite-volume Hubbard limit]\label{thm:limit}
+Fix the torus, $\beta,t,U,U_c,\mu$. As $\Omega\to\infty$, the normalized partition function, on-site pair correlations, and single-bond activities of the Hubbard–Holstein model converge to those of
+\[
+ H_{\rm Hub}=-t\sum_{\langle xy\rangle,\sigma}
+ (c_{x\sigma}^\dagger c_{y\sigma}+c_{y\sigma}^\dagger c_{x\sigma})
+ -(U-U_c)\sum_x\left(n_{x\uparrow}-\tfrac12\right)
+                   \left(n_{x\downarrow}-\tfrac12\right)-\mu N.
+\]
+\end{theorem}
+
+\begin{proof}
+In the Lang–Firsov Dyson expansion, a term with $m$ hopping insertions has total jump size at most $2m+4$, including the pair insertions. The preceding action bound makes its phonon factor tend to one as $\Omega\to\infty$. At fixed torus, the absolute electronic series is dominated by the trace of a finite-dimensional matrix exponential. Dominated convergence over the time variables and the Dyson series gives the Hubbard limit. The on-site electronic term is the one in \eqref{eq:hamiltonian} with its static interaction $-U+U_c$; at $U=U_c$ it vanishes, leaving free electrons.
+\end{proof}
+
+Any correlation bound uniform in $\Omega$ must therefore hold for this Hubbard limit. At $U_c=U$ and $\mu=0$, the limit is the free hopping model. Its single-bond activity is
+\[
+ w_\infty(\{e\})=\cosh^4(\beta t/2)-1.
+\]
+On the $6\times6$ torus at $\beta t=1$, Wick's rule gives
+\[
+ \lim_{\Omega\to\infty}
+ \left\langle\Deltaop_0^\dagger\Deltaop_{(2,3)}\right\rangle
+ =G_0(2,3)^2,
+ \qquad
+ G_0(r)=\frac1{36}\sum_k
+ \frac{\cos(k\cdot r)}{1+e^{-2\beta t(\cos k_1+\cos k_2)}},
+\]
+where $k_j$ ranges over $2\pi n/6$, $n=0,\ldots,5$. The graph distance is five, and direct enclosure of this finite sum gives
+\[
+ G_0(2,3)^2>
+ \frac{1533}{463}\left(\frac{48}{511}\right)^5,
+ \qquad
+ G_0(2,3)^2>
+ \frac{240}{59}\left(\frac5{64}\right)^5.
+\]
+The strict inequalities persist for all sufficiently large $\Omega$ by Theorem~\ref{thm:limit}. Thus neither of these two constant forms holds at $\tau=t$ uniformly in $\Omega$ at the degenerate point. This statement concerns the displayed forms, not exponential decay of the free-fermion correlation.
+
+\section{Where the atomic polymer criterion stops}
+
+The lower bounds below locate failures of the Kotecký–Preiss sufficient condition \cite{kp} for the atomic-limit expansion. They do not prove divergence of the cluster series or absence of pair-correlation decay. A diagonal sign gauge makes the single-bond hopping matrix entrywise nonnegative, so every single-bond Dyson term in the normalized partition function is nonnegative. At any vertex the criterion's site sum contains the term $e^2w_\Omega(\{e\})$ for each incident bond, so $e^2w_\Omega(\{e\})>1$ alone forces this sufficient condition to fail.
+
+Define
+\[
+ F_\beta(r)=\int_0^\beta(\beta-\Delta)e^{-r\Delta}\,d\Delta
+ =\frac{\beta r-1+e^{-\beta r}}{r^2},
+ \qquad F_\beta(0)=\frac{\beta^2}{2}.
+\]
+For $\beta r\ge2$, $F_\beta(r)\ge\beta/(2r)$. At $\mu=0$, for any $U_{\rm eff}$, and throughout the closed Mott window $U_{\rm eff}<0$, $|\mu|\le|U_{\rm eff}|/2$, the finite-frequency activity satisfies
+\[
+ w_\Omega(\{e\})\ge\frac{t^2}{4}F_\beta(r),
+ \qquad r=U+|U-U_c|.
+\]
+Consequently, when $\beta r\ge2$ it is at least $\beta t^2/(8r)$. A site sum containing the single-bond term $e^2w_\Omega(\{e\})$ exceeds one when $\beta t^2>8e^{-2}r$. On the repulsive side $U_c>U$, this rate parameter is $r=U_c$.
+
+At $\Omega=\infty$ and $\mu=0$, for $U_{\rm eff}\ne0$,
+\[
+ w_\infty(\{e\})\ge\frac{t^2}{4}F_\beta(|U_{\rm eff}|)
+ \ge\frac{\beta t^2}{8|U_{\rm eff}|}
+ \quad\text{if }\beta|U_{\rm eff}|\ge2.
+\]
+The finite-volume limit implies that, when $\beta t^2/|U_{\rm eff}|>8e^{-2}$ and $\beta|U_{\rm eff}|\ge2$, the same sufficient criterion fails for all sufficiently large $\Omega$. This limits this atomic-limit polymer argument; it does not establish a lower bound on correlations.
+
+At a Mott edge, take $U_{\rm eff}\le0$ and $\mu=-|U_{\rm eff}|/2$. The limit activity obeys
+\[
+ w_\infty(\{e\})\ge\frac{\cosh(\beta t)-1}{4}.
+\]
+At $\beta t=3$ this is greater than two, independently of $|U_{\rm eff}|$. The other edge follows by particle–hole symmetry. Thus a hypothesis based only on making $\beta t^2/|U_{\rm eff}|$ small cannot ensure this sufficient criterion at the edges for all large $\Omega$. The obstruction is a failure of the criterion, not a result about correlation decay.
+
+At $U_c=U$, $\mu=0$, the uniform finite-frequency lower bound becomes $w_\Omega(\{e\})\ge t^2F_\beta(U)/4$. In the free limit, $w_\infty(\{e\})=\cosh^4(\beta t/2)-1$, which exceeds $e^{-2}$ at $\beta t=0.51$ and one at $\beta t=1.22$. There is no atomic gap parameter at this point, and the same site-sum criterion fails on a temperature scale of order $t$ in the limit.
+
+\section{Questions left open}
+
+The arguments establish no low-temperature pair-correlation bound inside the Mott window, where the spin background is degenerate and the relevant hopping scale is $t^2/U_c$. The regime near the Mott edges also remains unresolved. At the degenerate point $U_c=U$, $\mu=0$, the finite-frequency behavior below $\tau=1024t$ is not determined here. The failure of a sufficient cluster criterion in these regimes should not be read as evidence that correlations fail to decay.
+
+\section*{Supporting material and disclosure}
+
+The finite arithmetic replay is supplied at \path{replay/replay.py}. Its SHA-256 digest is pinned in \path{replay/SOURCE-PINS.json}; the pin file records the digests of the final proof, result record, and replay source. The default replay and the full mutant replay both exit with status zero. In the latter run, each of the 20 deliberately altered variants is rejected with exit status one. The replay checks finite exact and interval witnesses, including the local bond matrices, sum-of-squares estimates, rational cluster constants, phonon-action bounds, and the free-electron witness. It does not formalize the oscillator trace identity, the infinite-volume cluster expansion, or the canonical pressure argument. No empirical data or simulation results are used. This preprint has not been peer reviewed. AI agents generated the proofs, code, and manuscript drafts under D. Rens' direction. Separate AI agents carried out the independent review.
+
+{\raggedright\small\bibliographystyle{plain}\bibliography{refs}\par}
+\end{document}

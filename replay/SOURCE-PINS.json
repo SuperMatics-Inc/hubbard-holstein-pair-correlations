@@ -1,0 +1,17 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "ADIABATIC/HUBHOL/RIGOR.md",
+      "sha256": "f90ec618c8bd53dac9b7d2da5255e7f2a66b608d60bf84c1f5cc11f4f1ecb75d"
+    },
+    {
+      "path": "ADIABATIC/HUBHOL/RESULT.md",
+      "sha256": "265b94f0e9248fdf99c3bfd814c98d97977ccdaefeba99a6fd97c5e916184dfb"
+    },
+    {
+      "path": "ADIABATIC/HUBHOL/replay.py",
+      "sha256": "6fc15739424899c025059f687c5cfac6107ea9f77c57aa15d78ee5e71f87922a"
+    }
+  ]
+}
